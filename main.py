@@ -5,4 +5,3 @@ import click
 def aok():
     """A utility to split and/or join audio files.
     """
-    click.echo("hello world")
