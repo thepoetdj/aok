@@ -1,2 +1,5 @@
 .vscode
 .venv
+.aok-testenv
+AudiOk.egg-info
+__pycache__
