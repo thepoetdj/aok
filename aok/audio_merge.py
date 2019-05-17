@@ -11,9 +11,14 @@ class AudioMerge():
     
     def merge(self):
         """Concats input audio files.
+
+        Repeat the audio when only single file is provided.
         """
-        for song in self._songs:
-            self._playlist += AudioSegment.from_file(song)
+        if len(self._songs) == 1:
+            self._playlist = AudioSegment.from_file(self._songs[0]) * 2
+        else:
+            for song in self._songs:
+                self._playlist += AudioSegment.from_file(song)
 
     def export(self, path):
         """Exports playlist to the path specified.
