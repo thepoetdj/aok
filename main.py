@@ -1,6 +1,7 @@
 import click
 
 from aok.audio_merge import AudioMerge
+from aok.exporter import Exporter
 
 @click.group()
 @click.version_option()
@@ -15,6 +16,4 @@ def aok():
 def join(output, input):
     """Merge two or more audio files.
     """
-    merger = AudioMerge(input)
-    merger.merge()
-    merger.export(output)
+    Exporter.export(output, AudioMerge.merge_all(input))

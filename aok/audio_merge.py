@@ -9,6 +9,10 @@ class AudioMerge():
         self._playlist = AudioSegment.empty()
         self._songs = songs
     
+    @staticmethod
+    def merge_all(songs):
+        return AudioMerge(songs).merge()
+
     def merge(self):
         """Concats input audio files.
 
@@ -19,10 +23,5 @@ class AudioMerge():
         else:
             for song in self._songs:
                 self._playlist += AudioSegment.from_file(song)
-
-    def export(self, path):
-        """Exports playlist to the path specified.
-
-        If no path is present, a temporary file is generated in current directory.
-        """
-        self._playlist.export(path if path else 'playlist{0}.mp3'.format(datetime.now().strftime('%Y%m%d%H%M%S')))
+        
+        return self._playlist
