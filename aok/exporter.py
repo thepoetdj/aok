@@ -5,7 +5,7 @@ from pydub import AudioSegment
 
 class Exporter:
     @staticmethod
-    def export(path: click.Path, playlist: AudioSegment) -> None:
+    def export(path: click.Path, playlist: AudioSegment, format: str) -> None:
         """Exports playlist to the path specified.
 
         If no path is present, a temporary file is generated in current directory.
@@ -16,5 +16,12 @@ class Exporter:
             the output file path
         playlist
             the playlist to export
+        format
+            the exported file's format
         """
-        playlist.export(path if path else 'playlist{0}.mp3'.format(datetime.now().strftime('%Y%m%d%H%M%S')))
+        if len(playlist) > 0:
+            # export only a non empty playlist
+            out = path or 'playlist{0}.{1}'.format(
+                datetime.now().strftime('%Y%m%d%H%M%S'),
+                format or 'mp3')
+            playlist.export(out, format=format or 'mp3')

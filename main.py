@@ -12,10 +12,15 @@ def aok() -> None:
     """
 
 @aok.command()
-@click.option('-o', '--output', help='Output file with absolute or relative path',
-                type=click.Path(), nargs=1, required=False)
+@click.option('-f', '--format', required=False,
+    type=click.Choice(['mp3', 'wav', 'aif', 'ogg']),
+    help='The format of both input and output audio')
+@click.option('-o', '--output', type=click.Path(), nargs=1,
+    help='Output file with absolute or relative path', required=False)
 @click.argument('input', type=click.File('rb'), nargs=-1, required=True)
-def join(output: click.Path, input: Sequence[click.File]) -> None:
+def join(format: str, output: click.Path, input: Sequence[click.File]) -> None:
     """Merge two or more audio files.
     """
-    Exporter.export(output, AudioMerge.merge_all(input))
+    Exporter.export(output,
+        AudioMerge.merge_all(input, format=format),
+        format=format)
