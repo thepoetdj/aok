@@ -25,3 +25,5 @@ class Exporter:
                 datetime.now().strftime('%Y%m%d%H%M%S'),
                 format or 'mp3')
             playlist.export(out, format=format or 'mp3')
+            click.secho('Playlist created successfully!',
+                fg='green')
