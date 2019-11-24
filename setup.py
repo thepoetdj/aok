@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name='aok',
-    version='0.2',
+    version='0.3',
     py_modules=['main'],
     install_requires=[
         'Click'
