@@ -10,4 +10,4 @@
 
 ## Installation and Usage
 
-Read my blog on how you can [Edit Your Audio Files with aok](https://dhruvpjoshi.github.io/2019/11/24/edit-your-audio-files-with-aok/), for its installation and usage instructions.
+Read my blog on how you can [Edit Your Audio Files with aok](https://thepoetdj.github.io/posts/edit-audio-files-with-aok/), for its installation and usage instructions.
